@@ -1,0 +1,71 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<plugin xmlns="http://apache.org/cordova/ns/plugins/1.0"
+        xmlns:android="http://schemas.android.com/apk/res/android"
+        id="cordova-plugin-background-mode"
+        version="0.7.2">
+
+    <name>BackgroundMode</name>
+
+    <description>Prevent apps from going to sleep in background.</description>
+
+    <repo>https://github.com/aliendb/androidBackgroundApp.git</repo>
+
+    <keywords> </keywords>
+
+    <license>Apache 2.0</license>
+
+    <author>Sebastián Katzer - Edit by DB</author>
+
+    <!-- dependencies -->
+    <dependency id="cordova-plugin-device" />
+
+    <!-- cordova -->
+    <engines>
+        <engine name="cordova" version=">=3.0.0" />
+        <engine name="android-sdk" version=">=16" />
+        <engine name="windows-sdk" version=">=10.0.14393.0" />
+    </engines>
+
+    <!-- js -->
+    <js-module src="www/background-mode.js" name="BackgroundMode">
+        <clobbers target="cordova.plugins.backgroundMode" />
+        <clobbers target="plugin.backgroundMode" />
+    </js-module>
+
+    <!-- android -->
+    <platform name="android">
+        <config-file target="res/xml/config.xml" parent="/*">
+            <feature name="BackgroundMode" >
+                <param name="android-package"
+                      value="de.appplant.cordova.plugin.background.BackgroundMode"/>
+            </feature>
+        </config-file>
+
+        <config-file target="res/xml/config.xml" parent="/*">
+            <preference name="KeepRunning" value="true" />
+            <preference name="AndroidLaunchMode" value="singleInstance"/>
+        </config-file>
+
+        <config-file target="AndroidManifest.xml" parent="/manifest/application">
+            <service android:name="de.appplant.cordova.plugin.background.ForegroundService" />
+        </config-file>
+
+        <config-file target="AndroidManifest.xml" parent="/manifest">
+            <uses-permission android:name="android.permission.WAKE_LOCK" />
+        </config-file>
+
+        <source-file
+            src="src/android/BackgroundMode.java"
+            target-dir="src/de/appplant/cordova/plugin/background" />
+
+        <source-file
+            src="src/android/BackgroundExt.java"
+            target-dir="src/de/appplant/cordova/plugin/background" />
+
+        <source-file
+            src="src/android/ForegroundService.java"
+            target-dir="src/de/appplant/cordova/plugin/background" />
+    </platform>
+
+</plugin>

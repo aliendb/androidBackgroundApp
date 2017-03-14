@@ -1,0 +1,30 @@
+{
+  "name": "cordova-plugin-background-mode",
+  "version": "0.7.2",
+  "description": "Prevent app from going to sleep in background.",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/aliendb/androidBackgroundApp.git"
+  },
+  "keywords": [
+    "appplant",
+    "background",
+    "cordova",
+    "ecosystem:cordova"
+  ],
+  "platforms": [
+    "android"
+  ],
+  "engines": [
+    {
+      "name": "cordova",
+      "version": ">=6.0.0"
+    }
+  ],
+  "author": "Sebastián Katzer - Edit by DB",
+  "license": "Apache 2.0",
+  "bugs": {
+    "url": " "
+  },
+  "homepage": " "
+}
